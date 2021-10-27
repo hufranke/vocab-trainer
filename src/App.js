@@ -36,6 +36,12 @@ const App = () => {
             answer: <ul><li>for-in: returns only keys</li><li>for-of: returns the values</li></ul>,
             level: 1
         },
+        {
+            id: 5,
+            category: 'JS',
+            question: 'What is meant by the "Lexical Scope"?',
+            answer: <p>Lexical scope refers to inheritance, such as nested functions can access the functions they're nested in (parent, grandparent and so on)</p>
+        }
     ])
     
     const [showAddQues, setShowAddQues] = useState(false)
