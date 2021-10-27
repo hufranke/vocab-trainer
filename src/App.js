@@ -8,6 +8,7 @@ const App = () => {
     const [ques, setQues] = useState([
         {
             id: 1,
+            category: 'JS',
             question: 'Which are the different types of variables in modern JS?',
             answer: <ul><li><b>var</b>: the "old" way. Can be written everywhere, which means, that you need to be careful where and how to use it.</li>
             <li><b>let</b>: is a block scoped variable. It can only be accessed and changed within its block (like a function)</li>
@@ -16,18 +17,21 @@ const App = () => {
         },
         {
             id: 2,
+            category: 'JS',
             question: 'A string is treated as what kind of object?',
             answer: 'As string is technically an object. Thus you can access every letter and use array-functions.',
             level: 2
         },
         {
             id: 3,
+            category: 'JS',
             question: 'How are const and arrays intertwined?',
             answer: 'Arrays can be of type const. If so the array container will be protected but you can still change specific array contents.',
             level: 3
         },
         {
             id: 4,
+            category: 'JS',
             question: `What's the difference of for-in and for-of?`,
             answer: <ul><li>for-in: returns only keys</li><li>for-of: returns the values</li></ul>,
             level: 1
