@@ -3,8 +3,10 @@ import React, {Component, useState} from "react";
 import Cards from './Components/Cards'
 import Header from './Components/Header'
 import AddQuestion from "./Components/AddQuestion";
+import Categories from './Components/Categories'
 
 const App = () => {
+    /** State arrays */
     const [ques, setQues] = useState([
         {
             id: 1,
@@ -93,11 +95,15 @@ const App = () => {
         {isAnsActive && toggleAns()}
     }
 
+    /** Output */
     return (
         <div className="container">
             <Header onAddQues={toggleShowAddQues} onNextQues={nextQuestion} />
             
             {showAddQues && <AddQuestion createNewQuestion={createNewQuestion} /> }
+
+            <Categories />
+
             <Cards sortedQues={sortedQues} changeLevel={changeLevel} quesNum={quesNum} toggleAns={toggleAns} isAnsActive={isAnsActive}/>
         </div>
     )
