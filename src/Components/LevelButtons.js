@@ -1,5 +1,4 @@
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
-import PropTypes from 'prop-types'
 
 const LevelButtons = ({id, level, onChangeLevel}) => {
     // console.log(level)

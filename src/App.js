@@ -1,9 +1,9 @@
-import React, {Component, useState} from "react";
+import React, {useState} from "react";
 
 import Cards from './Components/Cards'
 import Header from './Components/Header'
 import AddQuestion from "./Components/AddQuestion";
-import Categories from './Components/Categories'
+import Categories from './Components/QuestionCategories'
 
 const App = () => {
     /** State arrays */
@@ -43,17 +43,49 @@ const App = () => {
             category: 'JS',
             question: 'What is meant by the "Lexical Scope"?',
             answer: <p>Lexical scope refers to inheritance, such as nested functions can access the functions they're nested in (parent, grandparent and so on)</p>
+        },
+        {
+            id: 6,
+            category: 'CSS',
+            question: 'What does padding do?',
+            answer: <p>Padding adds space between the content and the  border of an element from the inside.</p>
         }
     ])
     
     const [showAddQues, setShowAddQues] = useState(false)
 
     const [quesNum, setQuesNum] = useState(0)
+
+    const [ quesCat, setQuesCat ] = useState('all')
     
-    const sortedQues = [...ques].sort((a, b) => a.level- b.level)
-    
-    
-    /** METHODS */
+    // Categorize question array
+    const categorizeQuestions = () => {
+        let categorizedArray = []
+
+        if(quesCat === 'all'){
+            categorizedArray = ques
+        } else{
+            categorizedArray = ques.filter(ques => ques.category === quesCat)
+        }
+
+        return categorizedArray
+    }
+
+    // Sort question array
+    const sortQuestions = () => {
+        const categorizedQuestions = categorizeQuestions()
+        return(
+            [...categorizedQuestions].sort((a, b) => a.level - b.level)
+        )
+    }
+    const sortedQues = sortQuestions()
+    console.log(sortedQues)
+
+    // Change question category
+    const changeQuestionCategory = (category) => {
+        setQuesCat(category)
+    }
+
     // Change question Level
     const changeLevel = (id, inputLevel) => {
         setQues(ques.map((question) =>
@@ -102,7 +134,7 @@ const App = () => {
             
             {showAddQues && <AddQuestion createNewQuestion={createNewQuestion} /> }
 
-            <Categories />
+            <Categories onChangeCategory={changeQuestionCategory} />
 
             <Cards sortedQues={sortedQues} changeLevel={changeLevel} quesNum={quesNum} toggleAns={toggleAns} isAnsActive={isAnsActive}/>
         </div>
